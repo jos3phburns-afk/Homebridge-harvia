@@ -9,6 +9,7 @@ import { HarviaAPI } from './api/HarviaAPI.js';
 import { HarviaDevice } from './HarviaDevice.js';
 import { HarviaWebSocket } from './HarviaWebSocket.js';
 import { ThermostatAccessory } from './accessories/ThermostatAccessory.js';
+import { TemperatureSensorAccessory } from './accessories/TemperatureSensorAccessory.js';
 import { SwitchAccessory, SwitchType } from './accessories/SwitchAccessory.js';
 import { DoorSensorAccessory } from './accessories/DoorSensorAccessory.js';
 
@@ -22,6 +23,7 @@ interface HarviaConfig extends PlatformConfig {
   password: string;
   pollingInterval?: number;
   enableThermostat?: boolean;
+  enableTemperatureSensor?: boolean;
   enableLight?: boolean;
   enableFan?: boolean;
   enableSteamer?: boolean;
@@ -144,6 +146,7 @@ export class HarviaPlatform implements DynamicPlatformPlugin {
 
     // Default all to true if not specified in config
     const enableThermostat = cfg.enableThermostat !== false;
+    const enableTemperatureSensor = cfg.enableTemperatureSensor !== false;
     const enableLight = cfg.enableLight !== false;
     const enableFan = cfg.enableFan !== false;
     const enableSteamer = cfg.enableSteamer !== false;
@@ -152,6 +155,8 @@ export class HarviaPlatform implements DynamicPlatformPlugin {
     const suffixes: Array<[string, string, boolean, (accessory: PlatformAccessory) => void]> = [
       ['thermostat', 'Thermostat', enableThermostat,
         (accessory) => new ThermostatAccessory(this.log, device, accessory, this.api)],
+      ['temperature', 'Temperature', enableTemperatureSensor,
+        (accessory) => new TemperatureSensorAccessory(this.log, device, accessory, this.api)],
       ['power', 'Power', true, // Power always enabled — core function
         (accessory) => new SwitchAccessory(this.log, device, accessory, 'power', this.api)],
       ['light', 'Light', enableLight,

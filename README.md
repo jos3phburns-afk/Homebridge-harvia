@@ -42,6 +42,7 @@ Add to your `config.json` under `platforms`, or configure via the Homebridge UI 
   "password": "yourpassword",
   "pollingInterval": 60,
   "enableThermostat": true,
+  "enableTemperatureSensor": true,
   "enableLight": true,
   "enableFan": true,
   "enableSteamer": false,
@@ -55,6 +56,7 @@ Add to your `config.json` under `platforms`, or configure via the Homebridge UI 
 | `password` | ✅ | — | MyHarvia app password |
 | `pollingInterval` | ❌ | `60` | Seconds between fallback polls (min 30) |
 | `enableThermostat` | ❌ | `true` | Expose heater as HomeKit HeaterCooler |
+| `enableTemperatureSensor` | ❌ | `true` | Expose current sauna temperature as a dedicated HomeKit Temperature Sensor for automations and Shortcuts |
 | `enableLight` | ❌ | `true` | Expose light as HomeKit Switch |
 | `enableFan` | ❌ | `true` | Expose fan as HomeKit Switch |
 | `enableSteamer` | ❌ | `false` | Expose steamer as HomeKit Switch |
@@ -67,6 +69,7 @@ Add to your `config.json` under `platforms`, or configure via the Homebridge UI 
 | Accessory | HomeKit Type | Enabled by default |
 |---|---|---|
 | Thermostat | HeaterCooler | ✅ |
+| Temperature | Temperature Sensor | ✅ |
 | Power | Switch | ✅ Always on |
 | Light | Switch | ✅ |
 | Fan | Switch | ✅ |

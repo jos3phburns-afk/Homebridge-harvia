@@ -56,24 +56,52 @@
         "type": "boolean",
         "default": true,
         "description": "Expose sauna door safety circuit as a HomeKit Contact Sensor"
+      },
+      "enableTemperatureSensor": {
+        "title": "Enable Temperature Sensor",
+        "type": "boolean",
+        "default": true,
+        "description": "Expose current sauna temperature as a dedicated HomeKit Temperature Sensor for automations and Shortcuts"
       }
     }
   },
   "layout": [
-    { "key": "name" },
-    { "key": "username" },
-    { "key": "password", "type": "password" },
-    { "key": "pollingInterval" },
+    {
+      "key": "name"
+    },
+    {
+      "key": "username"
+    },
+    {
+      "key": "password",
+      "type": "password"
+    },
+    {
+      "key": "pollingInterval"
+    },
     {
       "type": "fieldset",
       "title": "Accessories",
       "description": "Choose which accessories to expose in HomeKit",
       "items": [
-        { "key": "enableThermostat" },
-        { "key": "enableLight" },
-        { "key": "enableFan" },
-        { "key": "enableSteamer" },
-        { "key": "enableDoorSensor" }
+        {
+          "key": "enableThermostat"
+        },
+        {
+          "key": "enableTemperatureSensor"
+        },
+        {
+          "key": "enableLight"
+        },
+        {
+          "key": "enableFan"
+        },
+        {
+          "key": "enableSteamer"
+        },
+        {
+          "key": "enableDoorSensor"
+        }
       ]
     }
   ]
